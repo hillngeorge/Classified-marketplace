@@ -1,0 +1,36 @@
+<!-- templates/listings/category_listings.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category.name }} Listings</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/listings.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'listing_list' %}">Listings</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'inbox' %}">Inbox</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>{{ category.name }} Listings</h1>
+        <ul>
+            {% for listing in listings %}
+                <li>
+                    <h3><a href="{% url 'listing_detail' listing.slug %}">{{ listing.title }}</a></h3>
+                    <p>{{ listing.description }}</p>
+                    <p>Price: ${{ listing.price }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

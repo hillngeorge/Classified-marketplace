@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Inbox{% endblock %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/messaging.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Inbox</h2>
+<div class="inbox">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message-card">
+                <div class="message-header">
+                    <strong>From:</strong> {{ message.sender.username }}<br>
+                    <strong>About:</strong> <a href="{% url 'listing_detail' message.listing.pk %}">{{ message.listing.title }}</a>
+                </div>
+                <div class="message-body">
+                    <p>{{ message.content }}</p>
+                </div>
+                <div class="message-footer">
+                    <small>{{ message.timestamp }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No messages found.</p>
+    {% endif %}
+</div>
+{% endblock %}

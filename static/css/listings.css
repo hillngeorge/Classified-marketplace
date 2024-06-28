@@ -1,0 +1,145 @@
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.search-input,
+.search-select {
+    flex: 1 1 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-search {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-search:hover {
+    background-color: #45a049;
+}
+
+.add-listing-btn {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    text-align: center;
+    display: block;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-listing-btn:hover {
+    background-color: #45a049;
+}
+
+.listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.listing-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.listing-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.listing-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    max-height: 200px;
+    border-radius: 8px 8px 0 0;
+    object-fit: cover;
+}
+
+.listing-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.listing-card p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #666;
+}
+
+.btn-details {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.2s;
+}
+
+.btn-details:hover {
+    background-color: #45a049;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination .step-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination-link {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination-link:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .current {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    color: #333;
+}

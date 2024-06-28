@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Send Message{% endblock %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/messaging.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="message-form-container">
+    <h2>Send Message to {{ receiver.username }} about {{ listing.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="content">Content:</label>
+            {{ form.content }}
+        </div>
+        <button type="submit">Send</button>
+    </form>
+</div>
+{% endblock %}

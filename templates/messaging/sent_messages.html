@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sent Messages</title>
+</head>
+<body>
+    <h2>Sent Messages</h2>
+    <ul>
+        {% for message in messages %}
+            <li>
+                <strong>To:</strong> {{ message.receiver.username }}<br>
+                <strong>About:</strong> <a href="{% url 'listing_detail' message.listing.pk %}">{{ message.listing.title }}</a><br>
+                <p>{{ message.content }}</p>
+                <small>{{ message.timestamp }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
