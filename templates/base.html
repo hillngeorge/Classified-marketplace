@@ -1,3 +1,4 @@
+<!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,17 +19,13 @@
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'listing_list' %}">Listings</a></li>
-                <li><a href="{% url 'listing_create' %}">Create Listing</a></li>
+                
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}">Profile</a></li>
                     <li><a href="{% url 'inbox' %}">Inbox</a></li>
-                    <li>
-                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                            {% csrf_token %}
-                            <button type="submit" style="background:none; border:none; color: #007bff; cursor: pointer; padding: 0; font: inherit;">Logout</button>
-                        </form>
-                    </li>
+                    <li><a href="{% url 'listing_list' %}">Listings</a></li>
+                    <li><a href="{% url 'listing_create' %}">Create Listing</a></li>
+                    <li><a href="{% url 'my_logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'register' %}">Register</a></li>

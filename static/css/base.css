@@ -1,5 +1,4 @@
-/* base.css */
-/* Basic reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +6,7 @@
 }
 
 body {
-    font-family:'Open Sans', Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
@@ -50,25 +49,49 @@ header nav ul li {
     margin: 0 10px;
 }
 
-header nav ul li a {
+header nav ul li a, .nav-logout-button {
     color: #ffffff;
     text-decoration: none;
     padding: 10px 15px;
     display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
 }
 
-header nav ul li a:hover {
+header nav ul li a:hover, .nav-logout-button:hover {
     background: #42fa4b;
     border-radius: 4px;
     color: #333;
 }
 
+.btn-primary {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+}
 footer {
     background: #333;
     color: #ffffff;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
-    bottom: 0;
+    position: relative; 
     width: 100%;
+}
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+
+p {
+    margin-bottom: 15px;
+    margin-top: 15px;
 }

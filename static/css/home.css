@@ -33,3 +33,14 @@ img.listing-image {
     height: 306px;
     width: 260px;
 }
+h1 {
+    padding: 15px;
+}
+h2 {
+    padding: 10px;
+}
+header nav ul li a:hover, .nav-logout-button:hover {
+    background: #42fa4b;
+    border-radius: 4px;
+    color: #333;
+}

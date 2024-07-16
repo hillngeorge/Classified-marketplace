@@ -9,6 +9,7 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmVie
 from listings.models import Listing, Category
 from listings.forms import ListingForm  # Corrected import statement
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LogoutView
 
 def register(request):
     if request.method == 'POST':
@@ -31,6 +32,9 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
+
+class CustomLogoutView(LogoutView):
+    next_page = '/'
 
 def logout_view(request):
     logout(request)

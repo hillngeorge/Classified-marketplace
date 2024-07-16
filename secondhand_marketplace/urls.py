@@ -1,17 +1,16 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from users.views import register, profile_view, home, activity_feed, CustomPasswordResetView, CustomPasswordResetConfirmView
+from users.views import register, login_view, logout_view, profile_view, home, activity_feed, CustomPasswordResetView, CustomPasswordResetConfirmView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/register/', register, name='register'),
-    path('users/login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('users/logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),  # Ensure LogoutView is used
+    path('users/login/', login_view, name='login'),
+    path('users/logout/', logout_view, name='logout'),
     path('users/profile/', profile_view, name='profile'),
-    path('accounts/profile/', profile_view, name='account_profile'),  # Handle /accounts/profile/ default redirect
+    path('accounts/profile/', profile_view, name='account_profile'),
     path('', home, name='home'),
     path('activity/', activity_feed, name='activity_feed'),
     path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),
@@ -19,8 +18,9 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('listings/', include('listings.urls')),
     path('messaging/', include('messaging.urls')),
-    path('', include('django.contrib.auth.urls')),
+    path('', include('django.contrib.auth.urls')),  # Include default authentication URLs
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
