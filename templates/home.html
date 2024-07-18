@@ -1,32 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block title %}Welcome to Secondhand Marketplace{% endblock %}
+
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
-
 {% block content %}
-<h1>Welcome to the Secondhand Marketplace!</h1>
-        <section>
-            <h2>Categories</h2>
-            <div class="categories">
-                {% for category in categories %}
-                    <a href="{% url 'category_listings' category.id %}">{{ category.name }}</a>
-                {% endfor %}
+
+    <script src="{% static '/js/categories.js' %}"></script>
+
+    <h1>Welcome to the Secondhand Marketplace!</h1>
+    
+    <section class="categories">
+        <h2>Categories</h2>
+
+        <div class="search-form">
+            <input id="txtSearch" type="text" name="q" placeholder="Search ...">
+            <button type="button" class="btn-search">Search</button>
+        </div>
+
+        <div class="category-grid">
+            {% for category in categories %}
+                <a href="{% url 'category_listings' category.id %}" class="category-box">{{ category }}</a>
+            {% endfor %}
+        </div>
+    </section>
+    
+    <section class="listings">
+        <h2>Paid Listings</h2>
+        {% for listing in listings %}
+            <div class="listing-card">
+                {% if listing.image %}
+                    <img src="{{ listing.image.url }}" alt="{{ listing.title }}" class="listing-image">
+                {% endif %}
+                <h3><a href="{% url 'listing_detail' listing.slug %}">{{ listing.title }}</a></h3>
+                <p>{{ listing.description|truncatewords:20 }}</p>
+                <p><strong>${{ listing.price }}</strong></p>
             </div>
-        </section>
-        <section>
-            <h2>Paid Listings</h2>
-            <div class="listings">
-                {% for listing in listings %}
-                    <div class="listing-card">
-                        <img src="{{ listing.image.url }}" alt="{{ listing.title }}" class="listing-image">
-                        <h3><a href="{% url 'listing_detail' listing.slug %}">{{ listing.title }}</a></h3>
-                        <p>{{ listing.description|truncatewords:20 }}</p>
-                        <p><strong>${{ listing.price }}</strong></p>
-                    </div>
-                {% endfor %}
-            </div>
-        </section>
+        {% endfor %}
+    </section>
 {% endblock %}

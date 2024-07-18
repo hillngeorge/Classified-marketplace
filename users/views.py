@@ -22,13 +22,17 @@ def register(request):
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
 
-def login_view(request):
+def login_view(request):    
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
+            print("Valid form")
             return redirect('home')
+        else:
+            print("Invalid form")
+            print(form.errors.as_json())
     else:
         form = AuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
@@ -52,13 +56,16 @@ def profile_view(request):
     return render(request, 'users/profile.html', {'u_form': form})
 
 def home(request):
-    categories = Category.objects.all()
-    listings = Listing.objects.all()[:10]
+    categories = Category.objects.all().order_by('name')  # Order categories alphabetically
+    listings = Listing.objects.all()[:10]  # Assuming you want the first 10 listings
     context = {
         'categories': categories,
         'listings': listings,
     }
     return render(request, 'home.html', context)
+
+def contact(request):
+    return render(request, 'users/contact.html')
 
 def activity_feed(request):
     recent_listings = Listing.objects.order_by('-created_at')[:10]

@@ -5,16 +5,11 @@ from django.conf.urls.static import static
 from users.views import register, login_view, logout_view, profile_view, home, activity_feed, CustomPasswordResetView, CustomPasswordResetConfirmView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('users/register/', register, name='register'),
-    path('users/login/', login_view, name='login'),
-    path('users/logout/', logout_view, name='logout'),
-    path('users/profile/', profile_view, name='profile'),
-    path('accounts/profile/', profile_view, name='account_profile'),
+    path('admin/', admin.site.urls),        
     path('', home, name='home'),
     path('activity/', activity_feed, name='activity_feed'),
-    path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),
-    path('reset/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    #path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),
+    #path('reset/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('users/', include('users.urls')),
     path('listings/', include('listings.urls')),
     path('messaging/', include('messaging.urls')),

@@ -14,7 +14,7 @@ def listing_list(request):
 
     if query:
         listings = listings.filter(
-            Q(title__icontains=query) | Q(description__icontains=query)
+            Q(title__icontains=query) | Q(description__icontains=query) | Q(category__name__icontains=query)
         )
 
     if category_id:
@@ -30,16 +30,28 @@ def listing_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    categories = Category.objects.all()
+    # Define your general categories here
+    general_categories = [
+        'Electronics', 'Furniture', 'Home Appliances', 'Vehicles', 'Clothing',
+        'Books & Media', 'Sports & Outdoors', 'Toys & Games', 'Collectibles & Art',
+        'Beauty & Personal Care', 'Pet Supplies', 'Instruments', 'Jobs & Services',
+        'Real Estate', 'Office Supplies', 'Garden & Tools', 'Health & Supplements',
+        'Crafts & Hobbies', 'Miscellaneous'
+    ]
 
     return render(request, 'listings/listing_list.html', {
         'page_obj': page_obj,
-        'categories': categories,
+        'categories': general_categories,
         'query': query,
         'category_id': category_id,
         'min_price': min_price,
         'max_price': max_price,
     })
+
+def home(request):
+    categories = Category.objects.order_by('name')  # Order categories alphabetically
+    listings = Listing.objects.all()
+    return render(request, 'home.html', {'categories': categories, 'listings': listings})
 
 def listing_detail(request, slug):
     listing = get_object_or_404(Listing, slug=slug)

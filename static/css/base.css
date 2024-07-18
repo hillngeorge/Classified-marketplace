@@ -1,4 +1,5 @@
-
+/* base.css */
+/* Basic reset */
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +22,13 @@ header {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 header .logo {
@@ -66,30 +74,39 @@ header nav ul li a:hover, .nav-logout-button:hover {
     color: #333;
 }
 
-.btn-primary {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none;
+header .search-form {
+    display: flex;
+    align-items: center;
+}
+
+header .search-form input[type="text"] {
+    padding: 5px;
     font-size: 1rem;
-    display: inline-block;
-    transition: background-color 0.2s;
+    width: 200px;
+    margin-right: 5px;
+}
+
+header .search-form .btn-search {
+    padding: 5px 10px;
+    font-size: 1rem;
+    background-color: #333;
+    color: white;
     border: none;
     cursor: pointer;
 }
+
+header .search-form .btn-search:hover {
+    background-color: #45a049;
+}
+
 footer {
     background: #333;
     color: #ffffff;
     text-align: center;
     padding: 10px 0;
-    position: relative; 
+    position: relative;
     width: 100%;
 }
-.btn-primary:hover {
-    background-color: #45a049;
-}
-
 
 p {
     margin-bottom: 15px;
