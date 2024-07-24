@@ -12,7 +12,7 @@
 .page-title {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #000000;
     text-align: center;
 }
 
@@ -42,7 +42,7 @@
 
 .btn-submit {
     display: inline-block;
-    background-color: #333;
+    background-color: #bb0a21;
     color: #fff;
     padding: 10px 20px;
     border-radius: 4px;
@@ -53,5 +53,5 @@
 }
 
 .btn-submit:hover {
-    background-color: #45a049;
+    background-color: #bb0a21;
 }

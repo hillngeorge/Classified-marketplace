@@ -43,15 +43,15 @@
 
 .profile-container .button-container button {
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .profile-container .button-container button:hover {
-    background-color: #45a049;
+    background-color: #bb0a21;
 }
 
 .profile-container .logout-link {

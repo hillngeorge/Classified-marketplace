@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Welcome to Secondhand Marketplace{% endblock %}
+{% block title %}Rhythm Rescue{% endblock %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -11,7 +11,7 @@
 
     <script src="{% static '/js/categories.js' %}"></script>
 
-    <h1>Welcome to the Secondhand Marketplace!</h1>
+    <h1>Rhythm Rescue</h1>
     
     <section class="categories">
         <h2>Categories</h2>
@@ -29,7 +29,7 @@
     </section>
     
     <section class="listings">
-        <h2>Paid Listings</h2>
+        <h2>Popular Listings</h2>
         {% for listing in listings %}
             <div class="listing-card">
                 {% if listing.image %}
