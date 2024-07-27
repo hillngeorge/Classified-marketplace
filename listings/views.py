@@ -70,6 +70,17 @@ def listing_create(request):
         form = ListingForm()
     return render(request, 'listings/listing_form.html', {'form': form})
 
+def listing_edit(request, slug):
+    listing = get_object_or_404(Listing, slug=slug)
+    if request.method == 'POST':
+        form = ListingForm(request.POST, request.FILES, instance=listing)
+        if form.is_valid():
+            form.save()
+            return redirect('listing_detail', slug=listing.slug)
+    else:
+        form = ListingForm(instance=listing)
+    return render(request, 'listings/listing_form.html', {'form': form})
+
 def category_listings(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     listings = Listing.objects.filter(category=category)
