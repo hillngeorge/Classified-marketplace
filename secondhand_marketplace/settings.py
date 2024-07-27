@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost',
                  '127.0.0.1:80000',
-                 'https://rhythm-rescue-7b155367548f.herokuapp.com/'
+                 'rhythm-rescue-7b155367548f.herokuapp.com'
                  ]
 
 
