@@ -149,3 +149,37 @@ h3 {
 a {
     color: #000;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    .search-form {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+ 
+    .listing-card {
+        padding: 10px;
+    }
+
+    .listing-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .listing-card p {
+        font-size: 0.9rem;
+    }
+}
