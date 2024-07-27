@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-sx-z3_$o)4qt3093@k#)7nixe6=$u3l3kdl__=bjzx-k4js_na
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost',
-                 '127.0.0.1:80000',
+                 '127.0.0.1',
                  'rhythm-rescue-7b155367548f.herokuapp.com'
                  ]
 
