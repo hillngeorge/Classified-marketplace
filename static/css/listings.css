@@ -52,7 +52,7 @@ header nav ul li {
 }
 
 header nav ul li a, .nav-logout-button {
-    color: #ffffff;
+    color:#ffffff;
     text-decoration: none;
     padding: 10px 15px;
     display: block;
@@ -63,13 +63,12 @@ header nav ul li a, .nav-logout-button {
 }
 
 header nav ul li a:hover, .nav-logout-button:hover {
-    background: #ffffff
+    background:#ffffff;
     border-radius: 4px;
     color: #000000;
- 
 }
 
-.btn-primary {
+.btn-primary { 
     background-color: #000;
     color: #fff;
     padding: 10px 20px;
@@ -153,10 +152,12 @@ p {
     width: max-content;
     margin-left: auto;
     margin-right: auto;
+    
 }
 
 .add-listing-btn:hover {
     background-color: #bb0a21;
+
 }
 
 .listings {
