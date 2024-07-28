@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Path to the HTML file
+HTML_FILE="path/to/your/categories.html"
+
+# Function to add subcategories
+add_subcategories() {
+    local category="$1"
+    shift
+    local subcategories=("$@")
+    
+    # Find the category in the HTML file
+    local category_line=$(grep -n "<a href=\"#\" class=\"category\">$category</a>" "$HTML_FILE" | cut -d: -f1)
+    
+    if [[ -n "$category_line" ]]; then
+        # Insert subcategories after the category
+        local insert_line=$((category_line + 1))
+        
+        # Construct the subcategories HTML
+        local subcategories_html="<div class=\"subcategories\">"
+        for subcategory in "${subcategories[@]}"; do
+            subcategories_html+="<a href=\"#\" class=\"subcategory\">$subcategory</a>"
+        done
+        subcategories_html+="</div>"
+        
+        # Insert the subcategories HTML into the file
+        sed -i "${insert_line}i${subcategories_html}" "$HTML_FILE"
+    else
+        echo "Category '$category' not found in the HTML file."
+    fi
+}
+
+# Add subcategories for each category
+add_subcategories "Guitars" "Acoustic Guitars" "Electric Guitars" "Classical Guitars" "Bass Guitars"
+add_subcategories "Amps" "Tube Amps" "Solid-State Amps"
+add_subcategories "Keyboards" "Digital Pianos" "Synthesizers"
+add_subcategories "Drums" "Acoustic Drums" "Electric Drums"
+add_subcategories "Microphones" "Dynamic Microphones" "Condenser Microphones"
+add_subcategories "Audio Interfaces" "USB Interfaces" "Thunderbolt Interfaces"
+add_subcategories "Studio Monitors" "Nearfield Monitors" "Midfield Monitors"
+add_subcategories "Mixers" "Analog Mixers" "Digital Mixers"
+add_subcategories "DJ Equipment" "Controllers" "Turntables"
+add_subcategories "Music Production Software" "DAWs" "Plugins"
+add_subcategories "Headphones" "Closed-Back Headphones" "Open-Back Headphones"
+add_subcategories "Accessories" "Cables" "Stands"
+add_subcategories "Live Sound" "PA Systems" "Stage Monitors"
+add_subcategories "Recording Equipment" "Microphone Preamps" "Recording Consoles"
+add_subcategories "Lighting" "Stage Lighting" "DJ Lighting"
+cadd_subcategories "Music Lessons" "Guitar Lessons" "Piano Lessons" "Drum Lessons" "Vocal Lessons"
+add_subcategories "Music Theory" "Composition Lessons" "Ear Training"
+add_subcategories "Bands and Musicians" "Bands Seeking Members" "Musicians Seeking Bands"
+add_subcategories "Services" "Freelance Services" "Instrument Repair"
+exit()
+
+echo "Subcategories added successfully."
+
+./add_subcategories.sh
+

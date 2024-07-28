@@ -1,27 +1,23 @@
-
-
 function init() {
-    console.log("catgeories page!!");
-
+    console.log("categories page!!");
 
     document.getElementById("txtSearch").addEventListener("input", event => {
-        const search= event.target.value;
+        const search = event.target.value.toLowerCase();
+        const categories = document.querySelectorAll(".category-grid a, .category-grid .subcategories a");
 
-        const cats = document.querySelectorAll(".category-grid a");
-
-        cats.forEach(link => {
-            // current: if the category text contains the search query text
-            // go to: if the category text contains the search query, or the subcategories of the category contains the search query
-            if(link.textContent.toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) >= 0) {
-                // show
+        categories.forEach(link => {
+            if (link.textContent.toLowerCase().includes(search)) {
                 link.classList.remove("hide");
-            }
-            else {
-                // hide
+                // Show the subcategory container if it contains a matching link
+                const subcategoryContainer = link.closest(".subcategories");
+                if (subcategoryContainer) {
+                    subcategoryContainer.classList.add("show");
+                }
+            } else {
                 link.classList.add("hide");
             }
         });
-    })
+    });
 }
 
 window.onload = init;

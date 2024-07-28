@@ -113,6 +113,50 @@ a {
     color: #000;
 }
 
+/* Styles for category grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.category, .subcategory {
+    display: block;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    transition: background-color 0.2s;
+}
+
+.category:hover, .subcategory:hover {
+    background-color: #bb0a21;
+    color: #fff;
+}
+
+/* Hide subcategories by default */
+.subcategories {
+    display: none;
+}
+
+/* Show subcategories when a category is clicked */
+.category:focus + .subcategories,
+.category:active + .subcategories {
+    display: block;
+}
+
+.subcategory {
+    margin-top: 5px;
+}
+
+.subcategory:first-of-type {
+    margin-top: 0;
+}
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .header-content {
