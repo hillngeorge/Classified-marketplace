@@ -23,7 +23,6 @@ def register(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
-
 def login_view(request):    
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, data=request.POST)
@@ -37,6 +36,7 @@ def login_view(request):
     else:
         form = CustomAuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
+
 
 class CustomLogoutView(LogoutView):
     next_page = '/'
