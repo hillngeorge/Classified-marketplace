@@ -15,6 +15,8 @@ urlpatterns = [
     path('listings/', include('listings.urls')),
     path('messaging/', include('messaging.urls')),
     path('', include('django.contrib.auth.urls')),  
+     path('login/', login_view, name='login'),  
+    path('logout/', logout_view, name='logout'),
 ]
 
 if settings.DEBUG:
