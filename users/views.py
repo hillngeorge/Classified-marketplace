@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import CustomUser
-from .forms import CustomUserCreationForm, CustomUserChangeForm, CustomPasswordResetForm, CustomSetPasswordForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm, CustomPasswordResetForm, CustomSetPasswordForm, CustomAuthenticationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView
 from listings.models import Listing, Category
@@ -15,7 +15,9 @@ def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            user.username = form.cleaned_data["username"].capitalize()
+            user.save()
             login(request, user)
             return redirect('home')
     else:
@@ -24,17 +26,16 @@ def register(request):
 
 def login_view(request):    
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
+        form = CustomAuthenticationForm(request, data=request.POST)
+        if form.is_valid(): 
             user = form.get_user()
             login(request, user)
-            print("Valid form")
             return redirect('home')
         else:
             print("Invalid form")
             print(form.errors.as_json())
     else:
-        form = AuthenticationForm()
+        form = CustomAuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
 
 class CustomLogoutView(LogoutView):
