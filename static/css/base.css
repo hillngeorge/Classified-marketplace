@@ -10,7 +10,6 @@ body {
     background-color: #ffffff;
     color: #333;
     line-height: 1.6;
-    padding: 20px;
 }
 
 header {
@@ -20,6 +19,10 @@ header {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+}
+
+.main-container {
+    min-height: calc(100vh - 313px);
 }
 
 .header-content {
@@ -303,3 +306,4 @@ h2 {
     color: #000000;
     background-color: #bb0a21;
     transform: scale(1.1);
+}
