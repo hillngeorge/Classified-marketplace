@@ -1,4 +1,3 @@
-<!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHq+2lF6q4/tthpfyA5ds0hR1P1z/j3xkKwi1+5QpOUx0X6QG6zU1H4esnA4E3qGxj5G6G2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {% block extra_css %}
     {% endblock %}
 </head>
@@ -20,22 +19,23 @@
             <div class="logo">
                 <img src="{% static 'img/logo3.jpg' %}" alt="Secondhand Marketplace Logo">
             </div>
-           
             <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
+                <button class="menu-button" id="menu-button"><i class="fas fa-bars">Menu</i></button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <a href="{% url 'home' %}">Home</a>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'profile' %}">Profile</a></li>
-                        <li><a href="{% url 'inbox' %}">Inbox</a></li>
-                        <li><a href="{% url 'listing_list' %}">Listings</a></li>
-                        <li><a href="{% url 'listing_create' %}">Create Listing</a></li>
-                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                        <li><a href="{% url 'my_logout' %}">Logout</a></li>
+                        <a href="{% url 'profile' %}">Profile</a>
+                        <a href="{% url 'inbox' %}">Inbox</a>
+                        <a href="{% url 'listing_list' %}">Listings</a>
+                        <a href="{% url 'listing_create' %}">Create Listing</a>
+                        <a href="{% url 'contact' %}">Contact Us</a>
+                        <a href="{% url 'blog:post_list' %}">Blog</a>
+                        <a href="{% url 'my_logout' %}">Logout</a>
                     {% else %}
-                        <li><a href="{% url 'my_login' %}">Login</a></li>
-                        <li><a href="{% url 'register' %}">Register</a></li>
+                        <a href="{% url 'my_login' %}">Login</a>
+                        <a href="{% url 'register' %}">Register</a>
                     {% endif %}
-                </ul>
+                </div>
             </nav>
         </div>
     </header>
@@ -46,6 +46,23 @@
     <footer>
         <p>&copy; 2024 RhythmRescue.</p>
     </footer>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"> </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.getElementById('menu-button');
+            const dropdownContent = document.getElementById('dropdown-content');
+
+            menuButton.addEventListener('click', function() {
+                dropdownContent.classList.toggle('show');
+            });
+
+            window.addEventListener('click', function(e) {
+                if (!e.target.matches('#menu-button') && !e.target.matches('#menu-button i')) {
+                    if (dropdownContent.classList.contains('show')) {
+                        dropdownContent.classList.remove('show');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

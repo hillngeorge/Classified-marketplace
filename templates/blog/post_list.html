@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<h1>Blog</h1>
+
+{% if user.is_authenticated %}
+    <div>
+        <a class="new-post-button" href="{% url 'blog:post_create' %}">New Post</a>
+    </div>
+{% endif %}
+
+<div class="blog-posts">
+    {% for post in posts %}
+        <article class="blog-post">
+            <h2><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h2>
+            <p class="post-meta">by {{ post.author }} on {{ post.created_at }}</p>
+            <p>{{ post.content|truncatewords:30 }}</p>
+        </article>
+    {% endfor %}
+</div>
+{% endblock %}
+s
